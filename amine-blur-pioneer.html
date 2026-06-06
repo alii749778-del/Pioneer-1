@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>CapCut Pioneer Program – Amine Blur</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --yellow: #FFE234;
+    --yellow-btn: #F5C518;
+    --yellow-dark: #E6B800;
+    --orange: #FF8C00;
+    --text: #111111;
+    --gray: #666;
+    --white: #fff;
+    --card-bg: #fff;
+    --page-bg: #FEFACD;
+  }
+
+  body {
+    font-family: 'Nunito Sans', sans-serif;
+    background: var(--page-bg);
+    color: var(--text);
+    min-height: 100vh;
+    max-width: 430px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+  }
+
+  /* ── HEADER BANNER ── */
+  .hero {
+    background: var(--yellow);
+    padding: 28px 20px 24px;
+    position: relative;
+    overflow: hidden;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -30px; right: -20px;
+    width: 180px; height: 180px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+  }
+
+  .capcut-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    top: 16px; left: 20px;
+    background: var(--white);
+    border-radius: 12px;
+    padding: 6px 14px 6px 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  }
+
+  .capcut-logo svg {
+    width: 28px; height: 28px;
+  }
+
+  .capcut-logo span {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    color: #111;
+  }
+
+  .open-app-btn {
+    position: absolute;
+    top: 16px; right: 16px;
+    background: #00C8C8;
+    color: #fff;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .hero-title {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 42px;
+    line-height: 1.05;
+    color: #111;
+    margin-top: 56px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-emoji-box {
+    position: absolute;
+    right: 14px;
+    bottom: 14px;
+    width: 130px;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 72px;
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.15));
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  /* ── INVITE CARD ── */
+  .section { padding: 14px 16px 0; }
+
+  .invite-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 24px 20px 20px;
+    text-align: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    margin-bottom: 14px;
+    border: 1.5px dashed #F0E060;
+  }
+
+  .invite-label {
+    color: var(--orange);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    margin-bottom: 14px;
+  }
+
+  .reward-amount {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 52px;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: 20px;
+  }
+
+  .reward-amount .dollar { font-size: 38px; margin-top: 6px; }
+  .reward-amount .coin { font-size: 28px; margin-left: 6px; }
+
+  /* ── BUTTONS ── */
+  .btn-yellow {
+    display: block;
+    width: 100%;
+    background: var(--yellow-btn);
+    color: #111;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 17px;
+    padding: 16px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.1s;
+    box-shadow: 0 3px 0 var(--yellow-dark);
+  }
+
+  .btn-yellow:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--yellow-dark); }
+
+  .btn-outline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  /* ── WHITE CARDS ── */
+  .white-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    margin-bottom: 14px;
+  }
+
+  .card-title {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  /* ── TASK GRID ── */
+  .tasks-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .task-item {
+    background: #FFFBE6;
+    border-radius: 16px;
+    padding: 14px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .task-icon { font-size: 40px; margin-bottom: 4px; }
+
+  .task-name {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+  }
+
+  .task-desc {
+    font-size: 12px;
+    color: var(--gray);
+    line-height: 1.4;
+  }
+
+  /* ── INSPIRATION ROW ── */
+  .inspiration-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .inspo-item {
+    background: #FFFBE6;
+    border-radius: 16px;
+    padding: 14px 12px;
+  }
+
+  .inspo-icon { font-size: 36px; margin-bottom: 8px; }
+
+  .inspo-name {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    margin-bottom: 4px;
+  }
+
+  .inspo-desc { font-size: 11px; color: var(--gray); line-height: 1.4; }
+
+  /* ── COMMUNITY ── */
+  .community-row {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .community-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .comm-icon {
+    width: 44px; height: 44px;
+    background: #F3F3F3;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .comm-info { flex: 1; }
+  .comm-name { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 15px; }
+  .comm-desc { font-size: 12px; color: var(--gray); margin-top: 2px; }
+
+  .btn-sm-yellow {
+    background: var(--yellow-btn);
+    color: #111;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 8px 18px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .divider { height: 1px; background: #F0F0F0; margin: 4px 0; }
+
+  /* ── THINGS TO NOTE ── */
+  .note-text {
+    font-size: 14px;
+    color: #444;
+    line-height: 1.65;
+  }
+
+  .note-link {
+    color: var(--orange);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  /* ── BOTTOM CTA ── */
+  .bottom-cta {
+    padding: 16px 16px 0;
+  }
+
+  /* ── SPARKLES ── */
+  .spark {
+    position: absolute;
+    font-size: 18px;
+    animation: spin 4s linear infinite;
+  }
+  @keyframes spin { from { transform: rotate(0); } to { transform: rotate(360deg); } }
+  .spark1 { top: 22px; left: 14px; font-size: 22px; }
+  .spark2 { top: 60px; right: 150px; font-size: 14px; animation-direction: reverse; animation-duration: 3s; }
+  .spark3 { bottom: 20px; left: 50px; font-size: 16px; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="capcut-logo">
+    <!-- CapCut X logo -->
+    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="32" height="32" rx="8" fill="#111"/>
+      <path d="M8 8L16 16L8 24" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M16 8L24 16L16 24" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span>CapCut</span>
+  </div>
+  <button class="open-app-btn">Open App</button>
+
+  <span class="spark spark1">✦</span>
+  <span class="spark spark2">✦</span>
+  <span class="spark spark3">+</span>
+
+  <div class="hero-title">Pioneer<br>Program</div>
+  <div class="hero-emoji-box">📦💰</div>
+</div>
+
+<!-- INVITE CARD -->
+<div class="section">
+  <div class="invite-card">
+    <div class="invite-label">You're invited by Amine Blur</div>
+    <div class="reward-amount">
+      <span class="dollar">$</span>
+      <span>20</span>
+      <span class="coin">🪙</span>
+    </div>
+    <a href="#" class="btn-yellow">Get Started</a>
+  </div>
+</div>
+
+<!-- PIONEER TASKS -->
+<div class="section">
+  <div class="white-card">
+    <div class="card-title">Pioneer Tasks Overview</div>
+    <div class="tasks-grid">
+      <div class="task-item">
+        <div class="task-icon">🌸▶️</div>
+        <div class="task-name">Earn from views</div>
+        <div class="task-desc">Cash rewards for every 10k views your videos get.</div>
+      </div>
+      <div class="task-item">
+        <div class="task-icon">📱👤</div>
+        <div class="task-name">Earn from new users</div>
+        <div class="task-desc">Cash rewards for each new user your videos bring in.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- INSPIRATION & TRENDS -->
+<div class="section">
+  <div class="white-card">
+    <div class="card-title">Inspiration &amp; Trends</div>
+    <div class="inspiration-row">
+      <div class="inspo-item">
+        <div class="inspo-icon">💰🪙</div>
+        <div class="inspo-name">Top earners</div>
+        <div class="inspo-desc">See which videos are bringing in the most cash.</div>
+      </div>
+      <div class="inspo-item">
+        <div class="inspo-icon">📈🔥</div>
+        <div class="inspo-name">Top trends</div>
+        <div class="inspo-desc">Discover what's going viral on CapCut.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- JOIN COMMUNITY -->
+<div class="section">
+  <div class="white-card">
+    <div class="card-title">Join the Community</div>
+    <div class="community-row">
+      <div class="community-item">
+        <div class="comm-icon">🎮</div>
+        <div class="comm-info">
+          <div class="comm-name">Discord</div>
+          <div class="comm-desc">Connect with fellow Pioneer creators.</div>
+        </div>
+        <button class="btn-sm-yellow">Join</button>
+      </div>
+      <div class="divider"></div>
+      <div class="community-item">
+        <div class="comm-icon">✉️</div>
+        <div class="comm-info">
+          <div class="comm-name">Email</div>
+          <div class="comm-desc">Got questions? Reach out to us anytime.</div>
+        </div>
+        <button class="btn-sm-yellow" onclick="navigator.clipboard&&navigator.clipboard.writeText('pioneer@capcut.com');this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',2000)">Copy</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- THINGS TO NOTE -->
+<div class="section">
+  <div class="white-card">
+    <div class="card-title">Things to Note</div>
+    <p class="note-text">
+      CapCut reserves the right to delay or revoke rewards and disqualify any participant found violating the rules. By participating, you agree to the <a href="#" class="note-link">CapCut Pioneer Program Official Rules</a>
+    </p>
+  </div>
+</div>
+
+<!-- BOTTOM CTA -->
+<div class="bottom-cta">
+  <a href="#" class="btn-yellow">Get Started</a>
+</div>
+
+</body>
+</html>
